@@ -1,0 +1,137 @@
+/* Especificidade: cada seletor tem um peso e a soma dos pesos será levada em conta para
+que determinada declaração seja mais específica */
+/* #id tem peso 100; .class tem peso 10; element(tag) tem peso 1 */
+/* A cascata perde prioridade e é priorizada a especificidade da declaração */
+
+* {
+  margin: 0; /* retira todos espaços externos */
+  padding: 0; /* retira todos espaços internos */
+  box-sizing: border-box; /* deixa o tamanho das caixas iguais ao que foi determinado, 
+  desconsiderando os preenchimentos internos */
+}
+
+body {
+  /* border: 1px solid green; */
+  background-color: #09090a; /* cor de fundo */
+  color: white; /* cor do conteudo(texto) */
+
+  height: 100vh; /* define a altura(h) da caixa a 100% da viewport(v) - tamanho do browser*/
+}
+
+
+header {
+  /* border: 1px solid #790505; */
+  /* colocando os itens alinhado um ao lado do outro */
+
+  /* ALINHAMENTO DOS ELEMENTOS */
+  display: flex; /* ajusta tamanho dos elementos ao tamanho da caixa "header" com base no maior elemento */
+  align-items: center; /* ajusta tamanho dos elementos ao tamanho original e centraliza na caixa "header" */
+  justify-content: space-between; /* preeche entre os elementos com espaço */
+  /* FIM DO ALINHAMENTO DOS ELEMENTOS */
+
+  padding: 48px;
+
+  /* fixando o cabecalho */
+  position: fixed; /* ao colocar este atributo a caixa "header" ficou pequena sobre posto a caixa que vem abaixo dele "form". Agora tem que baixar a caixa "form" alterando o padding */
+  width: 100%; /* mantendo tamanho normal*/
+  background-color: #09090a;
+}
+
+/* continuar aula: https://youtu.be/gjxUm8X6pz0?t=1672*/
+
+button {
+  /* este button contém dois elementos */
+  /* preenchimento interno do botão */
+  padding: 16px 24px;
+  border-radius: 8px;
+  border: 1px solid #8b5cf6;
+  background-color: transparent; /* para a cor de fundo do botão mostrar a cor do body*/
+  color: white; /* background-color: transparent cobriu a cor do texto definindo em body */
+
+  /* O botão por padrão tem definição "display: inline" que mantém ele ao lado dos seus irmãos.
+ /* centralizando os itens dentro do button */
+  display: flex; /* permite alinhar */
+  align-items: center; /* so aplica este atributo com display flex*/
+  
+}
+
+form {
+  /* border: 1px solid white; */
+  /* disposição dos elementos dentro da caixa "form" */
+  display: flex;
+
+  padding: 180px 48px 48px; /* preenchendo com vazio ao redor das caixas dentro da caixa "form" */
+  width: fit-content;
+}
+
+.habits {
+  /* border: 1px solid blue; */
+  margin-top: 54px; /* empurra as caixa "habit" */
+  /* colocando espaço entre os elementos que estão dentro da caixa "habits" */
+  /* para aceitar definição de espaços temos que mudar o diplay para flex que na div é nativo block */
+  display: flex; /* ao mudar o display o alinhamento foi alterado para a horizontal */
+  /* retornando o alinhamento para vertical */
+  flex-direction: column;
+  /* aplicando o espaço */
+  gap: 24px;
+}
+
+.habit {
+  /* border: 1px solid red; */
+  /* tamanho da caixa */
+  width: 64px;
+  height: 64px;
+  /* tamanho do conteudo */
+  font-size: 32px;
+
+  /* disposição dos elementos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.days {
+  display: flex;
+  gap: 48px; /* espaço entre caixas "day" que estão dentro da caixa "days"; usa-se gap pois é display flex*/
+  margin-left: 32px; /* espaço entre caixa days e caixa habits */
+ 
+}
+
+.day {
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+ 
+}
+
+.day div {
+  margin-bottom: 8px; /* empurrando caixas inputs*/
+}
+
+input {
+  width: 64px;
+  height: 64px;
+  
+  border: 2px solid #27272a;
+  border-radius: 8px;
+  /* para aceitar os atributo de border -radius tem que cancelar o appearance */
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: #18181B;
+
+}
+
+/* pseudo-selector */
+input:checked {
+  background: #8b5cf6;
+  border:  2px solid #a78bfa;
+}
+
+/* enquanto a tela for até 570px */
+@media (max-width: 570px) {
+  button div {
+    display: none; /* não mostra a(s) div(s) que está em button */
+  }
+}
