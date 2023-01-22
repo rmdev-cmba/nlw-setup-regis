@@ -29,7 +29,7 @@ var NLWSetup = class NLWSetup {
    * `new Set()` of days to build the display of habits by days
    * @private
    */
-  days = new Set()
+  days = new Set() // adcionado propriedades de "Set" a esta variável que se torna um array.
   /**
    * You must build the `HTML` structure like this
    * 
@@ -196,7 +196,7 @@ var NLWSetup = class NLWSetup {
    */
   dayExists(date) {
     const formattedDate = this.#getFormattedDate(date)
-    return [...this.days].includes(formattedDate)
+    return [...this.days].includes(formattedDate) // verifica se dados recebidos já não está contido em days
   }
   /**
    * Add a day to registered days and render the layout after that
